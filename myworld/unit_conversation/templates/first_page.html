@@ -58,23 +58,39 @@ window.onload = function() {
 <form action="getnumber/" method="post">
 {% csrf_token %}
 your value:<br>
-<input type="text" name="first_num"
-  pattern="[0-9]*" title="a number"> <br> <br>
+<input type="text" name="first_num" , id="first_num" title="a number">
+<p id="p01"></p>
+   <br> <br>
 
-groups: <select name="group" id="group">
+groups: <select name="group" id="group" required>
     <option value="" selected="selected">Select group</option>
   </select>
   <br><br>
-Choose your initiate unit: <select name="first_unit" id="firstunit">
+Choose your initiate unit: <select name="first_unit" id="firstunit" required>
     <option value="" selected="selected">Please select group first</option>
   </select>
   <br><br>
-Choose your desired unit: <select name="last_unit" id="lastunit">
+Choose your desired unit: <select name="last_unit" id="lastunit" required>
     <option value="" selected="selected">Please select group first</option>
   </select>
   <br><br>
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" onclick="check_num()">
 </form>
+
+<script>
+function check_num() {
+  const message = document.getElementById("p01");
+  message.innerHTML = "";
+  let x = document.getElementById("first_num").value;
+  try {
+    if(x == "")  throw "empty";
+    if(isNaN(x)) throw "not a number";
+  }
+  catch(err) {
+    message.innerHTML = "Input is " + err;
+  }
+}
+</script>
 
 {% if messages %}
   {% for message in messages %}

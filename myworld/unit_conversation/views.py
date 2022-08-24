@@ -22,13 +22,13 @@ def result(request):
   template = loader.get_template('second_page.html')
   global first_num
   try:
-      if first_unit == 'Km' : middle = int(first_num) * 1000
-      elif first_unit == 'm' : middle = int(first_num)
-      elif first_unit == 'cm' : middle = int(first_num) / 100
-      elif first_unit == 'mm' : middle = int(first_num) / 1000
-      elif first_unit == 'Ton' : middle = int(first_num) * 1000
-      elif first_unit == 'Kg' : middle = int(first_num)
-      elif first_unit == 'g' : middle = int(first_num) / 1000
+      if first_unit == 'Km' : middle = float(first_num) * 1000
+      elif first_unit == 'm' : middle = float(first_num)
+      elif first_unit == 'cm' : middle = float(first_num) / 100
+      elif first_unit == 'mm' : middle = float(first_num) / 1000
+      elif first_unit == 'Ton' : middle = float(first_num) * 1000
+      elif first_unit == 'Kg' : middle = float(first_num)
+      elif first_unit == 'g' : middle = float(first_num) / 1000
 
       if last_unit == 'Km' : last = middle / 1000
       elif last_unit == 'm' : last = middle
