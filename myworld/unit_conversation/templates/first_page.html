@@ -12,7 +12,8 @@
 <form action="getnumber/" method="post">
 {% csrf_token %}
 your value:<br>
-<input name="first_num"> m <br> <br>
+<input type="text" name="first_num"
+  pattern="[0-9]*" title="a number"> <br> <br>
 <label for="first_unit">Choose your initiate unit:</label>
 <select id="first_unit" name="first_unit">
   <option value="Km">Km</option>
