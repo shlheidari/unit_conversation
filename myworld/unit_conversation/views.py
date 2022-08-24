@@ -34,3 +34,6 @@ def result(request):
     'last': last , 'first_num' : first_num , 'first_unit' : first_unit , 'last_unit' : last_unit
   }
   return HttpResponse(template.render(context,request))
+
+def back(request):
+    return HttpResponseRedirect(reverse('index'))
