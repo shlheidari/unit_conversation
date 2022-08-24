@@ -1,5 +1,51 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+var subjectObject = {
+  "Distance": {
+    "Km": ["Km"],
+    "m": ["m"],
+    "cm": ["cm"],
+    "mm": ["mm"]
+  },
+  "Weight": {
+    "Ton": ["Ton"],
+    "Kg": ["Kg"],
+    "g": ["g"]
+  }
+}
+window.onload = function() {
+  var groupSel = document.getElementById("group");
+  var firstunitSel = document.getElementById("firstunit");
+  var lastunitSel = document.getElementById("lastunit");
+  for (var x in subjectObject) {
+    groupSel.options[groupSel.options.length] = new Option(x, x);
+  }
+  groupSel.onchange = function() {
+    //empty units- dropdowns
+    firstunitSel.length = 1;
+    lastunitSel.length = 1
+    //display correct values
+    for (var y in subjectObject[this.value]) {
+      firstunitSel.options[firstunitSel.options.length] = new Option(y, y);
+      lastunitSel.options[lastunitSel.options.length] = new Option(y, y);
+    }
+  }
+  firstunitSel.onchange = function() {
+    //display correct values
+    var z = subjectObject[groupSel.value][this.value];
+  }
+  lastunitSel.onchange = function() {
+    //display correct values
+    var z = subjectObject[groupSel.value][this.value];
+  }
+}
+</script>
+</head>
+
 <body>
 
 
@@ -14,25 +60,20 @@
 your value:<br>
 <input type="text" name="first_num"
   pattern="[0-9]*" title="a number"> <br> <br>
-<label for="first_unit">Choose your initiate unit:</label>
-<select id="first_unit" name="first_unit">
-  <option value="Km">Km</option>
-  <option value="m">m</option>
-  <option value="cm">cm</option>
-  <option value="mm">mm</option>
-</select>
-<br> <br>
-<label for="last_unit">Choose your desired unit:</label>
-<select id="last_unit" name="last_unit">
-  <option value="Km">Km</option>
-  <option value="m">m</option>
-  <option value="cm">cm</option>
-  <option value="mm">mm</option>
-</select>
-<br>
 
-<br>
-<input type="submit" value="convert">
+groups: <select name="group" id="group">
+    <option value="" selected="selected">Select group</option>
+  </select>
+  <br><br>
+Choose your initiate unit: <select name="first_unit" id="firstunit">
+    <option value="" selected="selected">Please select group first</option>
+  </select>
+  <br><br>
+Choose your desired unit: <select name="last_unit" id="lastunit">
+    <option value="" selected="selected">Please select group first</option>
+  </select>
+  <br><br>
+  <input type="submit" value="Submit">
 </form>
 
 {% if messages %}

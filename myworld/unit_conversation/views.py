@@ -26,11 +26,18 @@ def result(request):
       elif first_unit == 'm' : middle = int(first_num)
       elif first_unit == 'cm' : middle = int(first_num) / 100
       elif first_unit == 'mm' : middle = int(first_num) / 1000
+      elif first_unit == 'Ton' : middle = int(first_num) * 1000
+      elif first_unit == 'Kg' : middle = int(first_num)
+      elif first_unit == 'g' : middle = int(first_num) / 1000
 
       if last_unit == 'Km' : last = middle / 1000
       elif last_unit == 'm' : last = middle
       elif last_unit == 'cm' : last = middle * 100
       elif last_unit == 'mm' : last = middle * 1000
+      elif last_unit == 'Ton' : last = middle / 1000
+      elif last_unit == 'Kg' : last = middle
+      elif last_unit == 'g' : last = middle * 1000
+
       context = {
         'last': last , 'first_num' : first_num , 'first_unit' : first_unit , 'last_unit' : last_unit
       }
