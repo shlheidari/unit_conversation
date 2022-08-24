@@ -2,8 +2,11 @@
 <html>
 <body>
 
+
 <h1>Unit Conversation</h1>
 <p>please enter your value</p>
+
+
 
 
 <form action="getnumber/" method="post">
@@ -31,6 +34,11 @@ your value:<br>
 <input type="submit" value="convert">
 </form>
 
+{% if messages %}
+  {% for message in messages %}
+    {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+  {% endfor %}
+{% endif %}
 
 </body>
 </html>
