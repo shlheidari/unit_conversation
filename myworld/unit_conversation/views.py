@@ -11,15 +11,20 @@ def index(request):
 
 
 def getnumber(request):
-    global first_num
+    global first_num, first_unit
     first_num = request.POST['first_num']
+    first_unit = request.POST['first_unit']
     return HttpResponseRedirect(reverse('result'))
 
 
 def result(request):
   template = loader.get_template('second_page.html')
-  last = int(first_num) * 100
+  if first_unit == 'Km' : last = int(first_num) * 1000
+  elif first_unit == 'm' : last = int(first_num) * 1
+  elif first_unit == 'cm' : last = int(first_num) / 100
+  elif first_unit == 'mm' : last = int(first_num) / 1000
+
   context = {
-    'last': last , 'first_num' : first_num
+    'last': last , 'first_num' : first_num , 'first_unit' : first_unit
   }
   return HttpResponse(template.render(context,request))

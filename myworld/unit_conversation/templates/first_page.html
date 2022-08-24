@@ -9,8 +9,16 @@
 <form action="getnumber/" method="post">
 {% csrf_token %}
 your value:<br>
-<input name="first_num"> m
+<input name="first_num"> m <br> <br>
+<label for="first_unit">Choose your initiate unit:</label>
+<select id="first_unit" name="first_unit">
+  <option value="Km">Km</option>
+  <option value="m">m</option>
+  <option value="cm">cm</option>
+  <option value="mm">mm</option>
+</select>
 <br>
+
 <br>
 <input type="submit" value="convert">
 </form>
