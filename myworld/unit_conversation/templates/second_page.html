@@ -3,19 +3,23 @@
 <body>
 
 <h1>Unit Conversation</h1>
-<p>please enter your value</p>
 
 
-<form action="getnumber/" method="post">
+
+
 {% csrf_token %}
-your value:<br>
-<input name="first"> m
+your value:
+<tr>
+<td>{{ first_num }}</td> m
+</tr>
 <br>
 <br>
-Output is: 100cm<output name="res"></output>
+Output is:
+<tr>
+<td>{{ last }}</td> cm
+</tr>
 <br>
 <br>
-<input type="submit" value="convert">
 </form>
 
 
